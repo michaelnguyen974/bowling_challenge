@@ -4,5 +4,8 @@
   },
   "devDependencies": {
     "jest": "^24.1.0"
+  },
+  "dependencies": {
+    "eslint": "^5.14.1"
   }
 }
