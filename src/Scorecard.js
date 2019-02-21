@@ -5,7 +5,7 @@ class Scorecard {
     return roll1 + roll2
   }
     
-}
+};
 
 module.exports = { 
   Scorecard 
