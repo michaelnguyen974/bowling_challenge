@@ -21,7 +21,9 @@ class Frame {
   constructor(rolls) {
     this.rolls = rolls
   }
- 
+  total(next_frame, frame_after_next) {
+    return scoreOfRoll() + this.bonus(next_frame, frame_after_next)
+  }
 
   scoreofRoll() {
     return this.rolls.reduce(function(score, roll) {
