@@ -27,6 +27,10 @@ class Frame {
   }
 
   bonus(next_frame, frame_after_next) {
+    if (this.scoreofRoll() === 10) {
+      return next_frame.strikeBonus(frame_after_next)
+    }
+    
     if (this.is_Spare()) {
       return next_frame.spareBonus()
     }

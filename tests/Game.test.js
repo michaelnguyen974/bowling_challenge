@@ -39,6 +39,12 @@ describe('game', () => {
       var next = new Frame([5,2]);
       expect(frame.total(next)).toEqual(15);
     });
+
+    test("calculates a total for one strike", () => {
+      var frame = new Frame([10]);
+      var next = new Frame([5,2]);
+      expect(frame.total(next)).toEqual(17);
+    });
   })
 
   function generateNewFrame(frame, final_frame) {
