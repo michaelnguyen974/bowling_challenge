@@ -11,7 +11,7 @@ class Game {
 
   score() {
     return this.frames.reduce(function(score, frame, frameindex, frames) {
-      return score 
+      return score + frame.total(frames[frameindex +1], frames[frameindex + 2])
     }, 0)
   }
     
@@ -21,6 +21,7 @@ class Frame {
   constructor(rolls) {
     this.rolls = rolls
   }
+ 
 
   scoreofRoll() {
     return this.rolls.reduce(function(score, roll) {
