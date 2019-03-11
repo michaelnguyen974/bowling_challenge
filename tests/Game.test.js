@@ -1,4 +1,5 @@
 const { Game } = require('../src/Game.js');
+const { Frame } = require('../src/Game.js')
 
 describe('game', () => {
 
@@ -15,6 +16,11 @@ describe('game', () => {
     test("calculates a standard game", () => {
       generateNewFrame([1,3]);
       expect(game.score()).toEqual(40);
+    });
+
+    test("calculates a game with spares", () => {
+      generateNewFrame([5,5], [5,5,5]);
+      expect(game.score()).toEqual(150);
     });
 
   })
