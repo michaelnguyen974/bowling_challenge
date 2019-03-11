@@ -27,10 +27,17 @@ describe('game', () => {
   })
 
   describe("Frame", () => {
+
     test("calculates a total for two rolls", () => {
       var frame = new Frame([1,3]);
       var next = new Frame([0,0]);
       expect(frame.total(next)).toEqual(4);
+    });
+
+    test("calculates a total for one spare", function(){
+      var frame = new Frame([5,5]);
+      var next = new Frame([5,2]);
+      expect(frame.total(next)).toEqual(15);
     });
   })
 
