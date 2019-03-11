@@ -7,7 +7,8 @@ describe('game', () => {
     game = new Game();
   });
 
-  describe("Gutter Game", () => {
+  describe("Game class", () => {
+    
     test('calculates gutter game', () => {
       generateNewFrame([0, 0])
       expect(game.score()).toEqual(0);
@@ -23,6 +24,15 @@ describe('game', () => {
       expect(game.score()).toEqual(150);
     });
 
+  })
+
+  describe("Frame", () => {
+    test("calculates a total for two rolls", () => {
+      
+      var frame = new Frame([1,3]);
+      var next = new Frame([0,0]);
+      expect(frame.total()).toEqual(4);
+    });
   })
 
   function generateNewFrame(frame, final_frame) {
