@@ -34,7 +34,7 @@ describe('game', () => {
       expect(frame.total(next)).toEqual(4);
     });
 
-    test("calculates a total for one spare", function(){
+    test("calculates a total for one spare", () => {
       var frame = new Frame([5,5]);
       var next = new Frame([5,2]);
       expect(frame.total(next)).toEqual(15);
