@@ -64,6 +64,17 @@ describe('game', () => {
       var frame_after_next = new Frame([10]);
       expect(frame.total(next, frame_after_next)).toEqual(30);
     });
+
+    test("calculates a strike in the final frame", () => {
+      var frame = new Frame([10,10,10]);
+      expect(frame.total()).toEqual(30);
+    });
+
+    test("calculates a strike in the final frame but one", () => {
+      var frame = new Frame([10]);
+      var next = new Frame([10,10,10]);
+      expect(frame.total(next)).toEqual(30);
+    });
   })
 
   function generateNewFrame(frame, final_frame) {
