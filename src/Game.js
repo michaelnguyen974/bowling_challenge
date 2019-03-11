@@ -29,6 +29,11 @@ class Frame {
     if (this.scoreofRoll() === 10) {
       return next_frame.spareBonus()
     }
+    return 0
+  }
+  
+  spareBonus() {
+    return this.rolls[0]
   }
 
   scoreofRoll() {
