@@ -24,6 +24,11 @@ describe('game', () => {
       expect(game.score()).toEqual(150);
     });
 
+    test("calculates a perfect game with all strikes", () => {
+      generateNewFrame([10], [10,10,10]);
+      expect(game.score()).toEqual(300);
+    });
+
   })
 
   describe("Frame", () => {
@@ -44,6 +49,20 @@ describe('game', () => {
       var frame = new Frame([10]);
       var next = new Frame([5,2]);
       expect(frame.total(next)).toEqual(17);
+    });
+
+    test("calculates a total for two strikes in a row", () => {
+      var frame = new Frame([10]);
+      var next = new Frame([10]);
+      var frame_after_next = new Frame([5, 2]);
+      expect(frame.total(next, frame_after_next)).toEqual(25);
+    });
+
+    test("calculates three strikes in a row", () =>{
+      var frame = new Frame([10]);
+      var next = new Frame([10]);
+      var frame_after_next = new Frame([10]);
+      expect(frame.total(next, frame_after_next)).toEqual(30);
     });
   })
 

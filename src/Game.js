@@ -10,8 +10,8 @@ class Game {
   }
 
   score() {
-    return this.frames.reduce(function(score, frame, frameindex, frames) {
-      return score + frame.total(frames[frameindex +1], frames[frameindex + 2])
+    return this.frames.reduce(function(score, frame, frameindex, framesArray) {
+      return score + frame.total(framesArray[frameindex +1], framesArray[frameindex + 2])
     }, 0)
   }
     
@@ -22,16 +22,26 @@ class Frame {
     this.rolls = rolls
     this.MAX_SCORE = 10
   }
+
+  scoreofRoll() {
+    return this.rolls.reduce(function(score, roll) {
+      return score + roll
+    })
+  }
+
   total(next_frame, frame_after_next) {
     return this.scoreofRoll() + this.bonus(next_frame, frame_after_next)
   }
 
   bonus(next_frame, frame_after_next) {
-    if (this.scoreofRoll() === 10) {
+    if (undefined === next_frame) {
+      return 0
+    }
+    if (this.is_Strike()) {
       return next_frame.strikeBonus(frame_after_next)
     }
-    
     if (this.is_Spare()) {
+
       return next_frame.spareBonus()
     }
     return 0
@@ -40,15 +50,24 @@ class Frame {
   is_Spare() {
     return this.scoreofRoll() === this.MAX_SCORE
   }
+
+  is_Strike() {
+    return this.firstRoll() === this.MAX_SCORE
+  }
   
   spareBonus() {
-    return this.rolls[0]
+    return this.firstRoll()
   }
 
-  scoreofRoll() {
-    return this.rolls.reduce(function(score, roll) {
-      return score + roll
-    })
+  strikeBonus(next_frame) {
+    if (this.is_Strike() && next_frame !== undefined) {
+      return this.scoreofRoll() + next_frame.firstRoll()
+    }
+    return this.firstRoll() + this.rolls[1]
+  }
+  
+  firstRoll() {
+    return this.rolls[0]
   }
 }
 
