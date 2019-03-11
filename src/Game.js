@@ -22,7 +22,11 @@ class Frame {
     this.rolls = rolls
   }
   total(next_frame, frame_after_next) {
-    return scoreOfRoll() + this.bonus(next_frame, frame_after_next)
+    return this.scoreofRoll() + this.bonus(next_frame, frame_after_next)
+  }
+
+  bonus(next_frame, frame_after_next) {
+    return 0
   }
 
   scoreofRoll() {
