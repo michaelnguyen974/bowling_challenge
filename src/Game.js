@@ -20,16 +20,21 @@ class Game {
 class Frame {
   constructor(rolls) {
     this.rolls = rolls
+    this.MAX_SCORE = 10
   }
   total(next_frame, frame_after_next) {
     return this.scoreofRoll() + this.bonus(next_frame, frame_after_next)
   }
 
   bonus(next_frame, frame_after_next) {
-    if (this.scoreofRoll() === 10) {
+    if (this.is_Spare()) {
       return next_frame.spareBonus()
     }
     return 0
+  }
+
+  is_Spare() {
+    return this.scoreofRoll() === this.MAX_SCORE
   }
   
   spareBonus() {
