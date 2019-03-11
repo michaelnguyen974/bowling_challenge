@@ -1,5 +1,5 @@
 const { Game } = require('../src/Game.js');
-const { Frame } = require('../src/Game.js')
+const { Frame } = require('../src/Frame.js')
 
 describe('game', () => {
 
@@ -32,6 +32,10 @@ describe('game', () => {
   })
 
   describe("Frame", () => {
+
+    beforeEach( () => {
+      frame = new Frame
+    })
 
     test("calculates a total for two rolls", () => {
       var frame = new Frame([1,3]);
