@@ -47,4 +47,5 @@ describe("Frame", () => {
     var next = new Frame([10,10,10]);
     expect(frame.total(next)).toEqual(30);
   });
+
 })

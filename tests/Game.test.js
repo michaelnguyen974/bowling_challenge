@@ -9,29 +9,39 @@ describe('game', () => {
   describe("Game class", () => {
     
     test('calculates gutter game', () => {
-      generateNewFrame([0, 0])
+      generateFrames([0, 0])
       expect(game.score()).toEqual(0);
     });
 
     test("calculates a standard game", () => {
-      generateNewFrame([1,3]);
+      generateFrames([1,3]);
       expect(game.score()).toEqual(40);
     });
 
     test("calculates a game with spares", () => {
-      generateNewFrame([5,5], [5,5,5]);
+      generateFrames([5,5], [5,5,5]);
       expect(game.score()).toEqual(150);
     });
 
     test("calculates a perfect game with all strikes", () => {
-      generateNewFrame([10], [10,10,10]);
+      generateFrames([10], [10,10,10]);
       expect(game.score()).toEqual(300);
     });
+
+    test("calculate a game with strikes normal scoring in the final frame", () => {
+      generateFrames([10], [10,10,2]);
+      expect(game.score()).toEqual(292)
+    })
+
+    test("calculate a game with strikes and spares in last frame", () => {
+      generateFrames([10], [10,5,5]);
+      expect(game.score()).toEqual(285)
+    })
 
   })
 
 
-  function generateNewFrame(frame, final_frame) {
+  function generateFrames(frame, final_frame) {
     for(i = 0; i < 9; i++) {
       game.roll(frame);
     }
