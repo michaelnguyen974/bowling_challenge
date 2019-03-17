@@ -5,23 +5,23 @@ class Frame {
   }
 
   scoreOfRoll() {
-    return this.rolls.reduce(function(score, roll) {
+    return this.rolls.reduce((score, roll) => {
       return score + roll
     })
   }
 
   total(next_frame, frame_after_next) {
-    return this.scoreofRoll() + this.bonus(next_frame, frame_after_next)
+    return this.scoreOfRoll() + this.bonus(next_frame, frame_after_next)
   }
 
   bonus(next_frame, frame_after_next) {
     if (next_frame === undefined) {
       return 0
     }
-    if (this.is_Strike()) {
+    if (this.isStrike()) {
       return next_frame.strikeBonus(frame_after_next)
     }
-    if (this.is_Spare()) {
+    if (this.isSpare()) {
 
       return next_frame.spareBonus()
     }
@@ -29,7 +29,7 @@ class Frame {
   }
 
   isSpare() {
-    return this.scoreofRoll() === this.MAX_SCORE
+    return this.scoreOfRoll() === this.MAX_SCORE
   }
 
   isStrike() {
@@ -41,8 +41,8 @@ class Frame {
   }
 
   strikeBonus(next_frame) {
-    if (this.is_Strike() && next_frame !== undefined) {
-      return this.scoreofRoll() + next_frame.firstRoll()
+    if (this.isStrike() && next_frame !== undefined) {
+      return this.scoreOfRoll() + next_frame.firstRoll()
     }
     return this.firstRoll() + this.rolls[1]
   }
