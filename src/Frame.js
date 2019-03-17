@@ -4,7 +4,7 @@ class Frame {
     this.MAX_SCORE = 10
   }
 
-  scoreofRoll() {
+  scoreOfRoll() {
     return this.rolls.reduce(function(score, roll) {
       return score + roll
     })
@@ -28,11 +28,11 @@ class Frame {
     return 0
   }
 
-  is_Spare() {
+  isSpare() {
     return this.scoreofRoll() === this.MAX_SCORE
   }
 
-  is_Strike() {
+  isStrike() {
     return this.firstRoll() === this.MAX_SCORE
   }
   
