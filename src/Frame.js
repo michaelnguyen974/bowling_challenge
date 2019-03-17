@@ -15,7 +15,7 @@ class Frame {
   }
 
   bonus(next_frame, frame_after_next) {
-    if (undefined === next_frame) {
+    if (next_frame === undefined) {
       return 0
     }
     if (this.is_Strike()) {
