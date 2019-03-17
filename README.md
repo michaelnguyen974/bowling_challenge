@@ -1,6 +1,6 @@
 # bowling_challenge
 
-##User stories 
+## User stories 
 
 ```
 As a player, 
