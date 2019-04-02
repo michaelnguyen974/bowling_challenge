@@ -1,5 +1,3 @@
-# bowling_challenge
-
 Bowling Challenge
 =================
 
